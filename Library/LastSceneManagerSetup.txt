@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/_Vechicles/Chopper/Scenes/Chopper.unity
+  isLoaded: 1
+  isActive: 1
