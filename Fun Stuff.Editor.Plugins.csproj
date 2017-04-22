@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Little War Machines\readme.txt" />
+    <None Include="Assets\Shaders\FlatShadedWaterWithEdgeBlend.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
   </ItemGroup>

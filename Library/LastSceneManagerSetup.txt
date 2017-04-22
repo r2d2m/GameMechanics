@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Vechicles/Chopper/Scenes/Chopper.unity
+- path: Assets/_Vechicles/Sailboat/Scenes/Sailboat.unity
   isLoaded: 1
   isActive: 1

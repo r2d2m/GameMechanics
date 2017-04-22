@@ -87,11 +87,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Water.cs" />
     <Compile Include="Assets\_Vechicles\Chopper\Scripts\ChopperController.cs" />
     <Compile Include="Assets\_Vechicles\Chopper\Scripts\ChopperMotor.cs" />
+    <Compile Include="Assets\_Vechicles\Sailboat\Scripts\SailboatController.cs" />
+    <Compile Include="Assets\_Vechicles\Sailboat\Scripts\SailboatMotor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Little War Machines\readme.txt" />
+    <None Include="Assets\Shaders\FlatShadedWaterWithEdgeBlend.shader" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
   </ItemGroup>
