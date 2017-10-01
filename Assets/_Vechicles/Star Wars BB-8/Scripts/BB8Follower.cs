@@ -5,10 +5,25 @@ using UnityEngine;
 public class BB8Follower : MonoBehaviour {
 
     public Transform BB8;
+    public BB8Controller BB8Controller;
+    private Vector3 cameraPosition;
+
+
+    public float depthOffset;
+    public float heightOffset;
+    public float pitchAngle;
+
 
     void Update()
     {
-        gameObject.transform.position = new Vector3(BB8.position.x, BB8.position.y + 2, BB8.position.z - 5);
+        gameObject.transform.rotation *= Quaternion.AngleAxis(BB8Controller.lookinput.y, Vector3.up);
+
+        cameraPosition = new Vector3(BB8.position.x + Mathf.Sin(gameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * depthOffset, 
+                                     heightOffset, 
+                                     BB8.position.z + Mathf.Cos(gameObject.transform.eulerAngles.y * Mathf.Deg2Rad) * depthOffset);
+
+        gameObject.transform.position = cameraPosition;
+
     }
     
 }

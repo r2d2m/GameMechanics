@@ -7,6 +7,8 @@ public class BB8Motor : MonoBehaviour {
     private BB8Controller BB8Controller;
     private Rigidbody BB8Rigidbody;
     private Transform Body;
+    public Transform HeadPivot;
+    public Transform Head;
 
     private float oldXaxisDistance;
     private float currentXaxisDistance;
@@ -17,6 +19,8 @@ public class BB8Motor : MonoBehaviour {
     private float currentZaxisDistance;
     private float travelledZaxisDistance;
     private float zAxisAngle;
+
+    private float angleToRotate;
 
     public float movementSpeed;
 
@@ -31,8 +35,23 @@ public class BB8Motor : MonoBehaviour {
 
         oldXaxisDistance = gameObject.transform.position.x;
         oldZaxisDistance = gameObject.transform.position.z;
-                
-        gameObject.transform.position += transform.TransformDirection(BB8Controller.movementInput) * Time.deltaTime * movementSpeed;
+
+        Vector3 cameraFowardMovementInput = Camera.main.transform.rotation * BB8Controller.movementInput;
+
+        if (BB8Controller.movementInput.magnitude != 0)
+        {
+            gameObject.transform.position +=  cameraFowardMovementInput * Time.deltaTime * movementSpeed;
+
+            gameObject.transform.forward = Vector3.Lerp(gameObject.transform.forward ,Camera.main.transform.rotation *  BB8Controller.movementInput, Time.deltaTime *5);
+
+            Head.transform.localEulerAngles = Vector3.Lerp(Head.transform.localEulerAngles, new Vector3(0, Camera.main.transform.eulerAngles.y, 0),Time.deltaTime * 10);
+        }
+
+       
+
+        float angle = Mathf.Lerp(0, 15, cameraFowardMovementInput.magnitude);
+
+        HeadPivot.rotation = Quaternion.AngleAxis(angle, new Vector3(-cameraFowardMovementInput.z, 0, cameraFowardMovementInput.x));
 
         currentXaxisDistance = gameObject.transform.position.x;
         currentZaxisDistance = gameObject.transform.position.z;
@@ -46,4 +65,6 @@ public class BB8Motor : MonoBehaviour {
         Body.Rotate(zAxisAngle, 0, -xAxisAngle, Space.World);
         
 	}
+
+
 }
